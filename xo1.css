@@ -1,0 +1,104 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-variant: small-caps;
+}
+body {
+  background-color: #1b182cf4;
+  width: 18rem;
+  margin: 1rem auto;
+  text-align: center;
+  color: #fff;
+  transition: 0.5s ease-in-out;
+}
+.turn {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 10rem;
+  margin: auto;
+  height: 5rem;
+  position: relative;
+}
+.turn h2 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin-bottom: 0.5rem;
+}
+h5 {
+  color: #1f88cf;
+}
+hr {
+  background-color: #1f88cf;
+  height: 0.1rem;
+  border: none;
+  margin-bottom: 0.5rem;
+}
+#light {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin: 1rem 0 0.5rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.turn .turn-box {
+  border: 3px solid #000000;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.turn .turn-box:nth-child(even) {
+  border-right: none;
+}
+
+.bg {
+  position: absolute;
+  width: 5rem;
+  height: 2.5rem;
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+  background-color: rgb(197, 29, 138);
+}
+.align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border: 1px solid #000;
+  width: 18rem;
+  height: 18rem;
+  margin: 2rem auto 0;
+}
+.grid .box {
+  border: 1px solid #000;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.grid .box:hover {
+  background-color: #a22075;
+}
+#play-again {
+  cursor: pointer;
+  border: none;
+  background-color: #a22075;
+  padding: 0.3rem 0.8rem;
+  font-size: 1.2rem;
+  border-radius: 0.2rem;
+  margin: 0.5rem;
+  display: none;
+}
+#play-again:hover {
+  padding: 0.3rem 1.2rem;
+  background-color: #1a6aa0;
+}
