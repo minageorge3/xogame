@@ -27,8 +27,12 @@ const getMood = localStorage.getItem("mood") || "dark";
 change(getMood);
 //
 let boxes = document.querySelectorAll(".box");
-turn = "x";
-gameOver = false;
+let turn = "x";
+let gameOver = false;
+const result = document.getElementById("result");
+const playAgain = document.getElementById("play-again");
+const bg = document.querySelector(".bg");
+
 boxes.forEach((e) => {
   e.innerHTML = "";
   e.addEventListener("click", () => {
@@ -36,14 +40,13 @@ boxes.forEach((e) => {
       e.innerHTML = turn;
       checkWin();
       checkDraw();
-    }
-    if (!gameOver) {
-      switchTurn();
+      if (!gameOver) {
+        switchTurn();
+      }
     }
   });
 });
 
-const bg = document.querySelector(".bg");
 function switchTurn() {
   if (turn === "x") {
     turn = "o";
@@ -53,8 +56,7 @@ function switchTurn() {
     bg.style.left = "0";
   }
 }
-const result = document.getElementById("result");
-const playAgain = document.getElementById("play-again");
+
 function checkWin() {
   let winConditions = [
     [0, 1, 2],

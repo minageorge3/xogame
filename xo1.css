@@ -63,7 +63,7 @@ hr {
   z-index: -1;
   left: 0;
   bottom: 0;
-  background-color: rgb(197, 29, 138);
+  background-color: #c51d8a;
 }
 .align {
   display: flex;
@@ -74,19 +74,37 @@ hr {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  border: 1px solid #000;
+  gap: 2px;
+  border: 2px solid #d8d8d8;
   width: 18rem;
   height: 18rem;
   margin: 2rem auto 0;
+  background-color: #222;
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+  box-shadow: 0 3px 10px #f502e132;
 }
 .grid .box {
-  border: 1px solid #000;
+  border: 1px solid #c5c5c5;
   font-size: 1.6rem;
   font-weight: 700;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1b182cf4;
+  color: #fff;
+  transition: 0.3s ease-in-out;
 }
 .grid .box:hover {
-  background-color: #a22075;
+  background-color: #333;
+  color: #f0f0f0;
+  box-shadow: 0 0 20px #f502e132;
+  scale: 0.99;
+}
+.grid .box:active {
+  background-color: #444;
+  color: #fff;
 }
 #play-again {
   cursor: pointer;
