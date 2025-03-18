@@ -49,7 +49,7 @@ hr {
 .turn .turn-box {
   border: 3px solid #000000;
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.1rem;
 }
 
 .turn .turn-box:nth-child(even) {
@@ -83,6 +83,7 @@ hr {
   padding: 0.3rem;
   border-radius: 0.2rem;
   box-shadow: 0 3px 10px #f502e132;
+  position: relative;
 }
 .grid .box {
   border: 1px solid #c5c5c5;
@@ -119,4 +120,40 @@ hr {
 #play-again:hover {
   padding: 0.3rem 1.2rem;
   background-color: #1a6aa0;
+}
+.grid::after {
+  content: "";
+  background-image: conic-gradient(
+    from var(--move),
+    #da1792,
+    #1187e7,
+    #19dc87,
+    #b72283
+  );
+  inset: -0.3rem;
+  border-radius: 0.5rem;
+  z-index: -1;
+  position: absolute;
+  animation: move 3s linear infinite;
+}
+.grid::after {
+  filter: blur(5rem);
+}
+@property --move {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes move {
+  from {
+    --move: 0deg;
+  }
+  to {
+    --move: 360deg;
+  }
+}
+.player-image {
+  width: 100%;
+  height: 100%;
+  transition: 0.5s ease-in-out;
 }

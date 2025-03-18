@@ -27,17 +27,21 @@ const getMood = localStorage.getItem("mood") || "dark";
 change(getMood);
 //
 let boxes = document.querySelectorAll(".box");
-let turn = "x";
+let turn = "justin";
 let gameOver = false;
 const result = document.getElementById("result");
 const playAgain = document.getElementById("play-again");
 const bg = document.querySelector(".bg");
 
+const justinImage = "images/Justin.jpg";
+const marittaImage = "images/Maritta.jpg";
+
 boxes.forEach((e) => {
   e.innerHTML = "";
   e.addEventListener("click", () => {
     if (e.innerHTML === "" && !gameOver) {
-      e.innerHTML = turn;
+      // e.innerHTML = turn;
+      e.innerHTML = `<img src="${turn === "justin" ? justinImage : marittaImage}" alt="${turn}" class="player-image" />`;
       checkWin();
       checkDraw();
       if (!gameOver) {
@@ -48,11 +52,11 @@ boxes.forEach((e) => {
 });
 
 function switchTurn() {
-  if (turn === "x") {
-    turn = "o";
+  if (turn === "justin") {
+    turn = "maritta";
     bg.style.left = "5rem";
   } else {
-    turn = "x";
+    turn = "justin";
     bg.style.left = "0";
   }
 }
@@ -68,22 +72,44 @@ function checkWin() {
     [0, 4, 8],
     [2, 4, 6],
   ];
-
-  for (i = 0; i < winConditions.length; i++) {
-    let v0 = boxes[winConditions[i][0]].innerHTML;
-    let v1 = boxes[winConditions[i][1]].innerHTML;
-    let v2 = boxes[winConditions[i][2]].innerHTML;
-    if (v0 != "" && v0 === v1 && v1 === v2) {
+  winConditions.forEach((w) => {
+    let one = boxes[w[0]].innerHTML;
+    let two = boxes[w[1]].innerHTML;
+    let three = boxes[w[2]].innerHTML;
+    if (one !== "" && one === two && two === three) {
       gameOver = true;
-      result.innerHTML = `${turn} win`;
+      result.innerHTML = `${turn === "justin" ? "Justin" : "Maritta"} wins!`;
+      // result.innerHTML = `${one.includes("Justin") ? "Justin" : "Maritta"} wins!`;
+      // result.innerHTML = `${turn} win`;
       playAgain.style.display = "inline";
-
-      for (j = 0; j < 3; j++) {
-        boxes[winConditions[i][j]].style.backgroundColor = "#1a6aa0";
-        boxes[winConditions[i][j]].style.color = "orange";
-      }
+      w.forEach((e) => {
+        // boxes[e].style.backgroundColor = "gray";
+        const img = boxes[e].querySelector("img");
+        if(img){
+          img.style.border='3px solid gold'
+          img.style.borderRadius='50%'
+        }
+      });
+      // boxes[w[0]].style.color = "red";
+      // boxes[w[1]].style.color = "red";
+      // boxes[w[2]].style.color = "red";
     }
-  }
+  });
+  // for (i = 0; i < winConditions.length; i++) {
+  //   let v0 = boxes[winConditions[i][0]].innerHTML;
+  //   let v1 = boxes[winConditions[i][1]].innerHTML;
+  //   let v2 = boxes[winConditions[i][2]].innerHTML;
+  //   if (v0 != "" && v0 === v1 && v1 === v2) {
+  //     gameOver = true;
+  //     result.innerHTML = `${turn} win`;
+  //     playAgain.style.display = "inline";
+
+  //     for (j = 0; j < 3; j++) {
+  //       boxes[winConditions[i][j]].style.backgroundColor = "#1a6aa0";
+  //       boxes[winConditions[i][j]].style.color = "orange";
+  //     }
+  //   }
+  // }
 }
 function checkDraw() {
   if (!gameOver) {
@@ -102,7 +128,7 @@ function checkDraw() {
 }
 playAgain.addEventListener("click", () => {
   gameOver = false;
-  turn = "x";
+  turn = "justin";
   bg.style.left = "0";
   result.innerHTML = "";
   playAgain.style.display = "none";
