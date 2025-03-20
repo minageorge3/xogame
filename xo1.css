@@ -65,11 +65,11 @@ hr {
   bottom: 0;
   background-color: #c51d8a;
 }
-.align {
+/* .align {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -87,25 +87,25 @@ hr {
 }
 .grid .box {
   border: 1px solid #c5c5c5;
-  font-size: 1.6rem;
-  font-weight: 700;
+  /* font-size: 1.6rem; */
+  /* font-weight: 700; */
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #1b182cf4;
-  color: #fff;
+  /* color: #fff; */
   transition: 0.3s ease-in-out;
 }
 .grid .box:hover {
   background-color: #333;
-  color: #f0f0f0;
+  /* color: #f0f0f0; */
   box-shadow: 0 0 20px #f502e132;
   scale: 0.99;
 }
 .grid .box:active {
   background-color: #444;
-  color: #fff;
+  /* color: #fff; */
 }
 #play-again {
   cursor: pointer;
@@ -155,5 +155,17 @@ hr {
 .player-image {
   width: 100%;
   height: 100%;
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.im {
+  animation: imm .7s ease-in-out infinite;
+}
+@keyframes imm {
+  0%,
+  100% {
+    filter: brightness(0.6);
+  }
+  50% {
+    filter: brightness(1);
+  }
 }

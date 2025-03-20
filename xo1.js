@@ -41,7 +41,9 @@ boxes.forEach((e) => {
   e.addEventListener("click", () => {
     if (e.innerHTML === "" && !gameOver) {
       // e.innerHTML = turn;
-      e.innerHTML = `<img src="${turn === "justin" ? justinImage : marittaImage}" alt="${turn}" class="player-image" />`;
+      e.innerHTML = `<img src="${
+        turn === "justin" ? justinImage : marittaImage
+      }" alt="${turn}" class="player-image" />`;
       checkWin();
       checkDraw();
       if (!gameOver) {
@@ -79,20 +81,33 @@ function checkWin() {
     if (one !== "" && one === two && two === three) {
       gameOver = true;
       result.innerHTML = `${turn === "justin" ? "Justin" : "Maritta"} wins!`;
+      // result.innerHTML = `<img src="${turn === "justin" ? justinImage : marittaImage}" alt="${turn}" class="player-image" style='width:2rem'  /> Wins`;
       // result.innerHTML = `${one.includes("Justin") ? "Justin" : "Maritta"} wins!`;
       // result.innerHTML = `${turn} win`;
       playAgain.style.display = "inline";
       w.forEach((e) => {
         // boxes[e].style.backgroundColor = "gray";
         const img = boxes[e].querySelector("img");
-        if(img){
-          img.style.border='3px solid gold'
-          img.style.borderRadius='50%'
+        if (img) {
+          img.classList.add("im");
+          img.style.border = "3px solid gold";
+          img.style.borderRadius = "50%";
         }
       });
       // boxes[w[0]].style.color = "red";
       // boxes[w[1]].style.color = "red";
       // boxes[w[2]].style.color = "red";
+      // Style losing boxes
+      boxes.forEach((box, index) => {
+        if (!w.includes(index)) {
+          // Exclude winning boxes
+          const img = box.querySelector("img");
+          if (img) {
+            img.style.opacity = "0.8";
+            img.style.filter = "grayscale(80%)";
+          }
+        }
+      });
     }
   });
   // for (i = 0; i < winConditions.length; i++) {
@@ -134,7 +149,7 @@ playAgain.addEventListener("click", () => {
   playAgain.style.display = "none";
   boxes.forEach((e) => {
     e.innerHTML = "";
-    e.style.removeProperty("background-color");
-    e.style.removeProperty("color");
+    // e.style.removeProperty("background-color");
+    // e.style.removeProperty("color");
   });
 });
