@@ -150,6 +150,5 @@ playAgain.addEventListener("click", () => {
   boxes.forEach((e) => {
     e.innerHTML = "";
     // e.style.removeProperty("background-color");
-    // e.style.removeProperty("color");
   });
 });

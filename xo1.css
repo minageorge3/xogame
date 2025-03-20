@@ -65,11 +65,11 @@ hr {
   bottom: 0;
   background-color: #c51d8a;
 }
-/* .align {
+.align {
   display: flex;
   align-items: center;
   justify-content: center;
-} */
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
